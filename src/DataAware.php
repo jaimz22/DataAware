@@ -47,6 +47,10 @@ trait DataAware
      */
     public function getData(string|array $key = null, mixed $default = null): mixed
     {
+        if (null === $key && null === $default) {
+            return $this->data;
+        }
+
         if (is_array($key)) {
             $outputData = [];
             foreach ($key as $outputKey => $dataKey) {
@@ -64,10 +68,6 @@ trait DataAware
             throw new DataNotFoundNoDefaultException($key, static::class);
         }
 
-        if (null === $key && null === $default) {
-            return $this->data;
-        }
-
         return $default;
     }
 
@@ -83,6 +83,10 @@ trait DataAware
      */
     public function getRawData(string|array $key = null, mixed $default = null): mixed
     {
+        if (null === $key && null === $default) {
+            return $this->rawData;
+        }
+
         if (is_array($key)) {
             $outputData = [];
             foreach ($key as $outputKey => $dataKey) {
@@ -98,10 +102,6 @@ trait DataAware
 
         if (func_num_args() === 1) {
             throw new DataNotFoundNoDefaultException($key, static::class);
-        }
-
-        if (null === $key && null === $default) {
-            return $this->rawData;
         }
 
         return $default;
@@ -225,7 +225,7 @@ trait DataAware
     {
         $groupFirstSet = ctype_upper(substr($string, 0, 2));
         // camelize key
-        $string = str_replace([' ', '_', '-', '\\', '/'], '', ucwords($string, ' _-/\\'));
+        $string = str_replace([' ', '_', '-', '\\', '/','.'], '', ucwords($string, ' _-/\\.'));
 
         if (!$groupFirstSet || (!ctype_upper($string) && !ctype_upper(substr($string, 1, 1)))) {
             $string = lcfirst($string);

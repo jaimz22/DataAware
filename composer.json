@@ -16,11 +16,13 @@
   }
   ,
   "require-dev": {
-    "roave/security-advisories": "dev-latest"
+    "roave/security-advisories": "dev-latest",
+    "phpunit/phpunit": "9.5.6"
   },
   "autoload": {
     "psr-4": {
-      "VertigoLabs\\DataAware\\": "src"
+      "VertigoLabs\\DataAware\\": "src",
+      "VertigoLabs\\Tests\\DataAware\\": "tests"
     }
   }
 }
