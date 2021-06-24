@@ -1,0 +1,26 @@
+{
+  "name": "vertigolabs/data-aware",
+  "description": "A library to give useful input data handling to your objects",
+  "version": "1.0.0",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "James Murray",
+      "email": "jaimz@vertigolabs.org"
+    }
+  ],
+  "require": {
+    "php": ">=8.0.0",
+    "symfony/property-access": "v5.3.0"
+  }
+  ,
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  },
+  "autoload": {
+    "psr-4": {
+      "VertigoLabs\\DataAware\\": "src"
+    }
+  }
+}
