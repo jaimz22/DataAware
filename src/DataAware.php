@@ -210,7 +210,9 @@ trait DataAware
 
         $result = [];
         foreach ($data as $key=>$value) {
-            $key = $this->normalizeString($key);
+            if(is_string($key)) {
+                $key = $this->normalizeString($key);
+            }
             $result[$key] = $this->normalizeDataKeys($value);
         }
         return $result;
