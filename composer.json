@@ -1,7 +1,7 @@
 {
   "name": "vertigolabs/data-aware",
   "description": "A library to give useful input data handling to your objects",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [

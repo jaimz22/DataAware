@@ -30,3 +30,13 @@ crashlytics-build.properties
 fabric.properties
 .idea/httpRequests
 .idea/caches/build_file_checksums.ser
+/.idea/.gitignore
+/.idea/data-aware.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/php.xml
+/.idea/php-test-framework.xml
+/.idea/phpunit.xml
+/.idea/vcs.xml
+/.phpunit.result.cache
+/composer.lock
