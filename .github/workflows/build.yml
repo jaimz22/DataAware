@@ -17,7 +17,7 @@ jobs:
         with:
           bootstrap: vendor/autoload.php
           php_extensions: xdebug
-          configuration: phpunit.xml
+          configuration: phpunit_config.xml
           args: --coverage-text
           php_version: "8.3"
 
