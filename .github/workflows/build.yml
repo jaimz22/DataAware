@@ -6,6 +6,21 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: php-actions/composer@v6
+      - name: PHPUnit Tests
+        uses: php-actions/phpunit@v3
+        with:
+          bootstrap: vendor/autoload.php
+          php_extensions: xdebug
+          configuration: phpunit.xml
+          args: --coverage-text
+          php_version: "8.3"
+
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
