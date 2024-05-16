@@ -12,7 +12,7 @@ class DataAwareTest extends TestCase
 
     public function testDefineDataDefaults()
     {
-        $obj = $this->getMockForAbstractClass(TestDataAware::class);
+        $obj = new TestDataAware();
         $refl = new \ReflectionObject($obj);
         $method = $refl->getMethod('defineDataDefaults');
         $method->setAccessible(true);
@@ -26,7 +26,7 @@ class DataAwareTest extends TestCase
             'test one'=>'1',
             'test-two'=>'2',
         ];
-        $obj = $this->getMockForAbstractClass(TestDataAware::class,[],'',true,true,true, ['defineDataDefaults']);
+        $obj = $this->createPartialMock(TestDataAware::class, ['defineDataDefaults']);
         $method = $obj->method('defineDataDefaults');
         $method->willReturn([
                     'testThree' => 'testThree',
@@ -56,7 +56,7 @@ class DataAwareTest extends TestCase
             ]
         ];
 
-        $obj = $this->getMockForAbstractClass(TestDataAware::class);
+        $obj = new TestDataAware();
         $obj->setData($testData);
         $this->assertArrayHasKey('testOne', $obj->getData());
         $this->assertArrayHasKey('testTwo', $obj->getData());
@@ -83,7 +83,7 @@ class DataAwareTest extends TestCase
             ]
         ];
 
-        $obj = $this->getMockForAbstractClass(TestDataAware::class);
+        $obj = new TestDataAware();
         $obj->setData($testData);
 
         $this->assertArrayHasKey('nestedOne', $obj->getData('testFour'));
@@ -110,7 +110,7 @@ class DataAwareTest extends TestCase
             ]
         ];
 
-        $obj = $this->getMockForAbstractClass(TestDataAware::class);
+        $obj = new TestDataAware();
         $obj->setData($testData);
 
         $this->assertSame($obj->getData('[testFour][nestedOne]'), '4-1');
@@ -127,7 +127,7 @@ class DataAwareTest extends TestCase
             ]
         ];
 
-        $obj = $this->getMockForAbstractClass(TestDataAware::class);
+        $obj = new TestDataAware();
         $obj->setData($testData);
 
         $this->expectException(DataNotFoundNoDefaultException::class);
@@ -145,7 +145,7 @@ class DataAwareTest extends TestCase
             ]
         ];
 
-        $obj = $this->getMockForAbstractClass(TestDataAware::class);
+        $obj = new TestDataAware();
         $obj->setData($testData);
 
         $this->expectException(DataNotFoundNoDefaultException::class);
@@ -163,7 +163,7 @@ class DataAwareTest extends TestCase
             ]
         ];
 
-        $obj = $this->getMockForAbstractClass(TestDataAware::class);
+        $obj = new TestDataAware();
         $obj->setData($testData);
 
         $this->assertSame('default-test',$obj->getData('does-not-exist', 'default-test'));
@@ -180,7 +180,7 @@ class DataAwareTest extends TestCase
             ]
         ];
 
-        $obj = $this->getMockForAbstractClass(TestDataAware::class);
+        $obj = new TestDataAware();
         $obj->setData($testData);
 
         $this->assertArrayHasKey('nested one', $obj->getRawData('test four'));
@@ -207,7 +207,7 @@ class DataAwareTest extends TestCase
             ]
         ];
 
-        $obj = $this->getMockForAbstractClass(TestDataAware::class);
+        $obj = new TestDataAware();
         $obj->setData($testData);
 
         $this->expectException(DataNotFoundNoDefaultException::class);
@@ -225,7 +225,7 @@ class DataAwareTest extends TestCase
             ]
         ];
 
-        $obj = $this->getMockForAbstractClass(TestDataAware::class);
+        $obj = new TestDataAware();
         $obj->setData($testData);
 
         $this->assertSame('default-test',$obj->getRawData('does-not-exist', 'default-test'));
@@ -243,7 +243,7 @@ class DataAwareTest extends TestCase
             'test.seven'=> 'testSeven'
         ];
 
-        $obj = $this->getMockForAbstractClass(TestDataAware::class);
+        $obj = new TestDataAware();
         $obj->setData($testData);
 
         foreach ($testData as $key=>$value) {
@@ -265,7 +265,7 @@ class DataAwareTest extends TestCase
             'test.seven'=> 'testSeven'
         ];
 
-        $obj = $this->getMockForAbstractClass(TestDataAware::class);
+        $obj = new TestDataAware();
         $obj->setData($testData);
 
         foreach ($testData as $key=>$value) {
@@ -287,7 +287,7 @@ class DataAwareTest extends TestCase
             'test.seven'=> 'testSeven'
         ];
 
-        $obj = $this->getMockForAbstractClass(TestDataAware::class);
+        $obj = new TestDataAware();
         $obj->setData($testData);
 
         foreach ($testData as $key=>$value) {
