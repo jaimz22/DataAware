@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
-         bootstrap="vendor/autoload.php"
-         colors="true">
-    <testsuites>
-        <testsuite name="My Test Suite">
-            <file>./tests/DataAwareTest.php</file>
-        </testsuite>
-    </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src</directory> <!-- Customize this path as per your source code location -->
-        </whitelist>
-    </filter>
-    <logging>
-        <log type="coverage-html" target="logs/coverage" lowUpperBound="35" highLowerBound="70"/>
-        <log type="coverage-clover" target="logs/clover.xml"/>
-        <log type="coverage-text" target="logs/coverage.txt" showUncoveredFiles="true"/>
-    </logging>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.1/phpunit.xsd" bootstrap="vendor/autoload.php" colors="true" cacheDirectory=".phpunit.cache">
+  <coverage>
+    <report>
+      <clover outputFile="logs/clover.xml"/>
+      <html outputDirectory="logs/coverage" lowUpperBound="35" highLowerBound="70"/>
+      <text outputFile="logs/coverage.txt" showUncoveredFiles="true"/>
+    </report>
+  </coverage>
+  <testsuites>
+    <testsuite name="My Test Suite">
+      <file>./tests/DataAwareTest.php</file>
+    </testsuite>
+  </testsuites>
+  <logging/>
+  <source>
+    <include>
+      <directory suffix=".php">./src</directory>
+    </include>
+  </source>
 </phpunit>
